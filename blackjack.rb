@@ -1,7 +1,7 @@
 
 puts "Enter your name:"
 name = gets.chomp
-puts "Hi, #{name}! Welcome to Our Casiono"
+puts "Hi, #{name}! Welcome to Our Casino"
 
 suits = ['H', 'D', 'S', 'C']
 symbols = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K']
@@ -44,11 +44,11 @@ if count_cards(player_hand) == 21 && count_cards(dealer_hand) != 21
 	exit
 elsif count_cards(player_hand) == 21 && count_cards(dealer_hand) == 21
 	puts "Your hand is: #{player_hand}"
-	puts "Your hand is: #{dealer_hand}"
+	puts "Dealer's hand is: #{dealer_hand}"
 	puts "Both sides have blackjack - It's a push"
 	exit
 elsif count_cards(player_hand) != 21 && count_cards(dealer_hand) == 21
-	puts "Your hand is: #{dealer_hand}"
+	puts "Dealer's hand is: #{dealer_hand}"
 	puts "Sorry, #{name}. Dealer has hit blackjack"
 	exit
 end
