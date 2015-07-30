@@ -1,0 +1,44 @@
+Requirements for the Blackjack game:
+
+Full deck is created
+Deck is shuffled
+Two initial cards are passed to both player and dealer
+One of the dealer cards is left face down while the remaining three cards are open
+Does player or dealer have a blackjack? whoever has blackjack wins immediately. If
+both hold blackjack, then it's a push
+If not, player is given two possible choices:
+-hit
+-stay
+If hit, player receives another card from the deck:
+-if the total is over 21, then player busts
+-If the total is 21, then player has blackjack and automatically wins
+-if not, player has the choice of either staying or hit and the cycle continues
+If the player has not busted or stayed then the turn swwitches over to the dealer
+Dealer's face card is revesaled
+Dealer keeps taking a card until the total is either 17 or above or busts.
+If the dealer busts, then player wins
+If the dealer stays (basically 17 or above) then both the player's hand and dealer's hand
+is compared
+if player's number is greater than dealer's, then player wins
+if dealer's number is greater than player's, then dealer wins
+That complete one round of game
+Player is given a choice to either keep player or leave the blackjack table
+
+Key Nouns:
+
+Deck
+Player
+Dealer
+Hand
+Game
+
+Key Verbs:
+
+deck created
+shuffle
+check for black jack
+check for bust
+count card total
+compare hands (between dealer and player's)
+announce winner or tie
+Play again or quit
