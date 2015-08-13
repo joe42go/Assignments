@@ -95,45 +95,84 @@ class Dealer
 end
 
 class Game
-  attr_accessor
+attr_accessor :player, :dealer, :deck
 
   def initialize
-    player = Player.new("Joe")
-    dealer = Dealer.new
-    deck = Deck.new
+    @player = Player.new("Joe")
+    @dealer = Dealer.new
+    @deck = Deck.new.scramble!
   end
 
   def deal_cards
+    2.times do player.add_one(deck.deal_one) end
+    2.times do dealer.add_one(deck.deal_one) end
+  end
+
+  def compare_hands
+
 
   end
 
-  def compare_hands (player, dealer)
-    player.total 
-
-  end
-
-  def announce_winner
-    if player.total == 21
+  def check_for_blackjack
+    if player.total == 21 && dealer.total == 21
+      puts "Both parties have blackjack (WOW!)- it's a tie"
+    elsif player.total == 21
       puts "Player has blackjack - Wins"
     elsif dealer.total == 21
+      puts "dealer has blackjack"
+    else
+      nil
+    end
+  end
+
+  def player_round
+        puts "Woud you like to hit or stay? (Y/N)"
+        p_response = gets.chomp.upcase
+        if p_response == 'Y'
+          player.add_one(deck.deal_one)
+          player.total
+          if player.total == 21
+            puts "You hit blackjack - Wins"
+          elsif player_total < 21
+            player_round
+          else
+            puts "Player has busted - Loses"
+          end
+        elsif p_response == 'N'
+          player.total
+        else
+          puts "You need to enter either \"Y\" or \"N\""
+        end
+  end
+
+  def dealer_round
+
+  end
+
+
+  def announce_winner
 
   end
 
   def play
     begin
-      #deck is created
-      #two cards are dealt to each player and dealer
-      #check for blackjack for both dealer and player 
-      #whoever has blackjack is immediately announced as winner
+      deal_cards
+      check_for_blackjack
+      if check_for_blackjack
+        nil
+      else
+        player_round
+        dealer_round
+        compare_hands
+      end
       #no blackjack then player decides whether to take another card
       #player keeps on till stay or bust
       #dealer keeps hitting until the total reaches 17 or abov or bust
       #if both dealer and player are alive, the winner is announced
-      #asked whether the player wants to keep on playing
-    end until 
+      puts "Would you like to play again: (Y/N)?"
+  		play_again = gets.chomp.upcase
+    end until play_again == 'N'
   end
-
 end
-
 
 Game.new.play
