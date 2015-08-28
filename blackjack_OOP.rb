@@ -36,7 +36,10 @@ class Deck
   def scramble!
     cards.shuffle!
   end
+<<<<<<< HEAD
 
+=======
+>>>>>>> 225546c228c0a10009dea3e9f6d3ad4549a9e532
   def deal_one
     cards.pop
   end
@@ -45,7 +48,11 @@ end
 module Hand
   def show_hand
     cards.each do |card|
+<<<<<<< HEAD
       puts "=> #{card}"
+=======
+      puts card
+>>>>>>> 225546c228c0a10009dea3e9f6d3ad4549a9e532
     end
   end
 
@@ -71,10 +78,13 @@ module Hand
   def add_one(new_card)
     cards << new_card
   end
+<<<<<<< HEAD
 
   def is_busted?
     total > Blackjack::BLACKJACK_AMOUNT
   end
+=======
+>>>>>>> 225546c228c0a10009dea3e9f6d3ad4549a9e532
 end
 
 class Player
@@ -86,12 +96,15 @@ class Player
     @name = name
     @cards = []
   end
+<<<<<<< HEAD
 
   def show_flop
     puts ""
     puts "----#{name}'s hand is----"
     show_hand
   end
+=======
+>>>>>>> 225546c228c0a10009dea3e9f6d3ad4549a9e532
 end
 
 class Dealer
@@ -103,6 +116,7 @@ class Dealer
     @name = "Dealer"
     @cards = []
   end
+<<<<<<< HEAD
 
   def show_flop
     puts ""
@@ -243,3 +257,89 @@ end
 
 blackjack = Blackjack.new
 blackjack.start
+=======
+end
+
+class Game
+attr_accessor :player, :dealer, :deck
+
+  def initialize
+    @player = Player.new("Joe")
+    @dealer = Dealer.new
+    @deck = Deck.new.scramble!
+  end
+
+  def deal_cards
+    2.times do player.add_one(deck.deal_one) end
+    2.times do dealer.add_one(deck.deal_one) end
+  end
+
+  def compare_hands
+
+
+  end
+
+  def check_for_blackjack
+    if player.total == 21 && dealer.total == 21
+      puts "Both parties have blackjack (WOW!)- it's a tie"
+    elsif player.total == 21
+      puts "Player has blackjack - Wins"
+    elsif dealer.total == 21
+      puts "dealer has blackjack"
+    else
+      nil
+    end
+  end
+
+  def player_round
+        puts "Woud you like to hit or stay? (Y/N)"
+        p_response = gets.chomp.upcase
+        if p_response == 'Y'
+          player.add_one(deck.deal_one)
+          player.total
+          if player.total == 21
+            puts "You hit blackjack - Wins"
+          elsif player_total < 21
+            player_round
+          else
+            puts "Player has busted - Loses"
+          end
+        elsif p_response == 'N'
+          player.total
+        else
+          puts "You need to enter either \"Y\" or \"N\""
+        end
+  end
+
+  def dealer_round
+
+  end
+
+
+  def announce_winner
+
+  end
+
+  def play
+    begin
+      deal_cards
+      check_for_blackjack
+      if check_for_blackjack
+        nil
+      else
+        player_round
+        dealer_round
+        compare_hands
+      end
+      #no blackjack then player decides whether to take another card
+      #player keeps on till stay or bust
+      #dealer keeps hitting until the total reaches 17 or abov or bust
+      #if both dealer and player are alive, the winner is announced
+      puts "Would you like to play again: (Y/N)?"
+  		play_again = gets.chomp.upcase
+    end until play_again == 'N'
+  end
+end
+
+Game.new.play
+>>>>>>> 225546c228c0a10009dea3e9f6d3ad4549a9e532
