@@ -1,0 +1,12 @@
+1. local variable, instance variable, creation of an Object using User class, get method of User class, set method of User class
+2. By using the keyphrase "include [Module Name here]"
+3. class variable uses two '@@' instead of one and can be called using "self" under Class
+4. it allows you to get and set the instance variables within the class
+5. This is a get method of a class called Dog
+6. subclassing uses "<" instead of 'Include'
+7. def initialize (name)
+        @name = name
+  end
+8. yes
+9. you need install 'pry' and then 'require pry' in the beginning of the document and insert the word 'binding.pry' in a particular section of the code where you want the code to stop executing so
+that you can verify whether it's working properly up to that point
